@@ -1,55 +1,47 @@
-= Favorite Coffee -- Coffee recommendation with Neo4j 
+# Favorite Coffee — Coffee Recommendation with Neo4j
 
+## Development Setup
 
+### Prerequisites
+- JDK 16
+- Maven
+- Docker
 
+### Starting a Fresh Neo4j Instance
 
-== Development
+To start a fresh Neo4j instance, run the following command:
 
-Requires JDK 16, Maven, and Docker.
-
-
-You can start a fresh Neo4j instance with:
-
-[source,bash]
-----
+```bash
 ./run-graph-db.sh
-----
+You can run Cypher queries in your IDE or in the Neo4j Browser at http://localhost:7474/browser.
 
-----
+Running the Application in Development Mode
+After starting the Neo4j server locally, you can run the application in development mode using Maven:
 
- Run the Cypher-Queries in your IDE or the http://localhost:7474/browser/[Neo4j Browser^].
 
-
-Then run the application in development mode (connecting to the local Neo4j server) with:
-
-[source,bash]
-----
 mvn quarkus:dev
-----
+Once the application is running, you can explore the coffee recommendation website at http://localhost:8080/.
 
-Then, explore the coffee website at: http://localhost:8080/
+Production Setup
+Step 1: Create a Free Cloud Instance of Neo4j
+You can create an online free cloud instance of Neo4j at https://dev.neo4j.com/aura.
+
+Step 2: Load Cypher Data
+After creating the database, load the necessary Cypher data.
+
+Step 3: Update application.properties
+Update your application.properties file with the connection details of your Neo4j cloud instance:
 
 
-== Production
-
-You can create your online free cloud instance of Neo4j at https://dev.neo4j.com/aura
-
-After creating your database, load the Cypher data, and update your `application.properties` with the connection URL and password:
-
-----
-# Your Neo4j URI, use `neo4j` instead of `neo4j+s`, due to a Quarkus issue in 2.1.2
 quarkus.neo4j.uri=neo4j://xxxxab01.databases.neo4j.io
 quarkus.neo4j.encrypted=true
-quarkus.neo4j.authentication.username=[...]
-quarkus.neo4j.authentication.password=[...]
-----
+quarkus.neo4j.authentication.username=your-username
+quarkus.neo4j.authentication.password=your-password
+Note: Use neo4j:// instead of neo4j+s:// due to a Quarkus issue in version 2.1.2.
 
-Then you can package your application and run it in production mode.
+Step 4: Package the Application
+You can package the application and run it in production mode with the following commands:
 
-[source,bash]
-----
+
 mvn package
 java -jar target/quarkus-app/quarkus-run.jar
-----
-
-
