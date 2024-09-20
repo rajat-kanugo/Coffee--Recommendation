@@ -1,7 +1,6 @@
-= Favorite Coffee -- Coffee recommendation with Neo4j and Quarkus
+= Favorite Coffee -- Coffee recommendation with Neo4j 
 
-How to build a coffee beans recommendation with Neo4j and Quarkus.
-To get the full story, see this blog post and the explanation videos: https://blog.sebastian-daschner.com/entries/building-recommendations-with-neo4j
+
 
 
 == Development
@@ -16,14 +15,9 @@ You can start a fresh Neo4j instance with:
 ./run-graph-db.sh
 ----
 
-In another terminal, run the following to create the sample data:
-
-[source,bash]
-----
-docker exec graph-db /var/lib/neo4j/bin/cypher-shell -u neo4j -p test --file /import/load-coffee-data.cypher
 ----
 
-Or alternatively run the Cypher-Queries in your IDE or the http://localhost:7474/browser/[Neo4j Browser^].
+ Run the Cypher-Queries in your IDE or the http://localhost:7474/browser/[Neo4j Browser^].
 
 
 Then run the application in development mode (connecting to the local Neo4j server) with:
@@ -59,6 +53,3 @@ java -jar target/quarkus-app/quarkus-run.jar
 ----
 
 
-== How does it work
-
-https://blog.sebastian-daschner.com/entries/building-recommendations-with-neo4j
